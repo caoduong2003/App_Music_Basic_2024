@@ -1,4 +1,4 @@
-git package com.example.appmusicbasic;
+package com.example.appmusicbasic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
