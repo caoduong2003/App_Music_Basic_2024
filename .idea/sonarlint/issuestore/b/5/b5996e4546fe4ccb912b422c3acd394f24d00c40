@@ -9,10 +9,10 @@ v
 java:S1104"YMake DATABASE_NAME a static final constant or non-public and provide accessors if needed.(Ьч«Я8№­уЫз1
 |
 java:S1104"ZMake DB_SUFFIX_PATH a static final constant or non-public and provide accessors if needed.(к Яцюяяяя8№­уЫз1
-l
-java:S2095Є"IUse try-with-resources or close this "InputStream" in a "finally" clause.(”ХЩ юяяяя8ыищЫз1
 q
-java:S2095°"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ЛќТвшяяяя8ыищЫз1
+java:S2095·"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ЛќТвшяяяя8ыищЫз1
+l
+java:S2095±"IUse try-with-resources or close this "InputStream" in a "finally" clause.(”ХЩ юяяяя8ыищЫз1
 t	java:S116"XRename this field "DATABASE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ьч«Я8«®уЫз1
 z	java:S116"YRename this field "DB_SUFFIX_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(к Яцюяяяя8«®уЫз1
 M
@@ -27,7 +27,8 @@ c
 java:S1075"ARefactor your code to get this URI from a customizable parameter.(к Яцюяяяя8І®уЫз1
 X	java:S1258"<This block of commented-out lines of code should be removed.(Ш·‰ч8ё®уЫз1
 X	java:S125="<This block of commented-out lines of code should be removed.(заЃЯ8ё®уЫз1
-j	java:S100v"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ЂиО8њйщЫз1
-Y	java:S125Ў"<This block of commented-out lines of code should be removed.(ѕ—‚Е8ЎйщЫз1
-j	java:S100К"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ї—ж8ЄйщЫз1
-Y	java:S125Ь"<This block of commented-out lines of code should be removed.(Ѓ¶цЂ8¬йщЫз1
+]	java:S125t"<This block of commented-out lines of code should be removed.(ЪУЎ·ьяяяя8пцЯшз1
+j	java:S100|"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ЂиО8њйщЫз1
+Y	java:S125Ё"<This block of commented-out lines of code should be removed.(ѕ—‚Е8ЎйщЫз1
+j	java:S100С"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ї—ж8ЄйщЫз1
+Y	java:S125г"<This block of commented-out lines of code should be removed.(Ѓ¶цЂ8¬йщЫз1
