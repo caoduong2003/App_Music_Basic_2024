@@ -1,3 +1,23 @@
 
 m
 =app/src/main/java/com/example/appmusicbasic/MainActivity.java,c\f\cf58292e4ec747034a5404ba8baa0182806c1e12
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+D
+app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6
+f
+6app/src/main/java/com/example/appmusicbasic/Login.java,b\5\b5996e4546fe4ccb912b422c3acd394f24d00c40
+m
+=app/src/main/java/com/example/appmusicbasic/SQLiteHelper.java,c\7\c7140f5579a060e3f2cb018aedfcdc03221d02a4
+n
+>app/src/main/java/com/example/appmusicbasic/SQLiteAdapter.java,a\6\a6b5e6f83b87a14bca9615368824849340bcc4a4
+e
+5app/src/main/java/com/example/appmusicbasic/User.java,f\8\f827f7bfddaa283b08ea9a531ff8dbb388616a5a
+i
+9app/src/main/java/com/example/appmusicbasic/Register.java,6\f\6f4281a79cb4c1cd564d940bcafcbe413ce5e573
+k
+;app/src/main/java/com/example/appmusicbasic/List_Music.java,7\b\7bbace1cc5fcf728acfcc136ffdc8f1024969744
+o
+?app/src/main/java/com/example/appmusicbasic/ForgotPassword.java,6\2\6217bea53ff9062be1b497ac150d2327e82da638
