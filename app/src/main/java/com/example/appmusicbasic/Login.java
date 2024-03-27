@@ -113,6 +113,12 @@ public class Login extends AppCompatActivity {
             editor.putBoolean("Login", true);
             editor.apply();
         }
+//        else {
+//            Intent intent = new Intent(Login.this, List_Music.class);
+//            intent.putExtra("username", userLogin.getText().toString().trim());
+//            startActivity(intent);
+//            finish();
+//        }
     }
 
     public void CheckLogin() {
@@ -129,6 +135,7 @@ public class Login extends AppCompatActivity {
                 if (username.equals(cursor.getString(1)) && password.equals(cursor.getString(2))) {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Login.this, List_Music.class);
+                    intent.putExtra("username", username);
                     startActivity(intent);
                     checkRemember();
                 } else {
