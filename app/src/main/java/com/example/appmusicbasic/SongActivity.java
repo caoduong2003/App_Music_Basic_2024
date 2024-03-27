@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,13 +14,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class SongActivity extends AppCompatActivity {
 
     TextView txtTenBaiHat, txtTotalTime, txtTimeSong;
     ImageButton btnPrevious, btnNexts,btnStop,btnPlay;
@@ -32,15 +30,32 @@ public class MainActivity extends AppCompatActivity {
     int position = 0;
     MediaPlayer mediaPlayer;
     Animation animation;
+
+    private static final String PREF_NAME = "MyPreferences"; // Tên của SharedPreferences
+    private static final String KEY_NAME = "name"; // Key của dữ liệu cần kiểm tra
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Kiểm tra SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        if (sharedPreferences.contains("position") && sharedPreferences.contains("process")) {
+            // Nếu SharedPreferences có giá trị cho KEY_NAME
+            int pos = sharedPreferences.getInt("position",0);
+            int pro = sharedPreferences.getInt("process",0);
+//            chayLaiMediaPlayer(pos,pro);
+            Toast.makeText(this, "Dữ liệu đã được lưu trữ: " + pos + "----"+ pro, Toast.LENGTH_SHORT).show();
+        } else {
+            // Nếu SharedPreferences không có giá trị cho KEY_NAME
+            Toast.makeText(this, "Không có dữ liệu được lưu trữ trước đó.", Toast.LENGTH_SHORT).show();
+        }
         setContentView(R.layout.play_song);
         addControl();
         createData();
         khoiTaoMediaPlayer();
 
         addEvent();
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -55,33 +70,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 mediaPlayer.seekTo(seekBar.getProgress());
+                System.out.println("seekbar = "+ seekBar.getProgress());
+
             }
         });
-        animation= AnimationUtils.loadAnimation(MainActivity.this,R.anim.disc_rotate);
+        animation= AnimationUtils.loadAnimation(SongActivity.this,R.anim.disc_rotate);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStop() {
+        super.onStop();
 
+        SharedPreferences.Editor editor = getSharedPreferences("MyPreferences", MODE_PRIVATE).edit();
 
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("seekBarProgress", seekBar.getProgress());
+        editor.putInt("process", seekBar.getProgress());
+        editor.putInt("position", position);
+
         editor.apply();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Khôi phục trạng thái của SeekBar
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
 
-        int progress = prefs.getInt("seekBarProgress", 0); // Giá trị mặc định ở đây là 0
-        System.out.println("process = "+ progress);
-        khoiTaoMediaPlayer();
-        seekBar.setProgress(progress);
+
+        SharedPreferences prefs = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+
+        int savedPosition = prefs.getInt("position", 0); // 0 là giá trị mặc định nếu không tìm thấy giá trị
+        int process = prefs.getInt("process",10);
 
     }
 
@@ -132,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 ivDisc.startAnimation(animation);
                 SetTotalTime();
                 UpdateTimeSong();
+                System.out.println(position);
             }
         });
         btnPrevious.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +193,17 @@ public class MainActivity extends AppCompatActivity {
     private  void khoiTaoMediaPlayer(){
         mediaPlayer = MediaPlayer.create(this,arrayListSong.get(position).getFile());
         txtTenBaiHat.setText(arrayListSong.get(position).getTenbaihat());
+
     }
+
+    private  void chayLaiMediaPlayer(int position,int process){
+        mediaPlayer = MediaPlayer.create(this,arrayListSong.get(position).getFile());
+        txtTenBaiHat.setText(arrayListSong.get(position).getTenbaihat());
+        mediaPlayer.seekTo(process);
+        seekBar.setProgress(process);
+    }
+
+
     private void createData(){
         arrayListSong = new ArrayList<>();
         arrayListSong.add(new Song("Chúng ta của hiện tại",R.raw.chungtacuahientai));

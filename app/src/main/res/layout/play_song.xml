@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SongActivity">
 
     <TextView
         android:id="@+id/txtTenBaiHat"
@@ -56,7 +56,7 @@
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
+        app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
         app:srcCompat="@drawable/stop" />
@@ -82,7 +82,7 @@
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
         app:srcCompat="@drawable/next" />
@@ -91,11 +91,11 @@
         android:id="@+id/btnPlay"
         android:layout_width="39dp"
         android:layout_height="49dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
         app:srcCompat="@drawable/play" />
