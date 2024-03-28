@@ -1,12 +1,17 @@
 package com.example.appmusicbasic;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class ListSong extends AppCompatActivity {
+
     public String[] songName = {"bai1","bai2","bai3","bai4"};
 
     public String[] name = {"bai1","bai2","bai3","bai4"};
@@ -37,6 +42,20 @@ public class ListSong extends AppCompatActivity {
         }
 
         listView.setAdapter(songAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Song selectedSong = songAdapter.getItem(position);
+
+                // Create Intent to pass song data to DetailActivity
+                Intent intent = new Intent(ListSong.this, SongActivity.class);
+                intent.putExtra("title", selectedSong.getTenbaihat());
+                intent.putExtra("artist", selectedSong.getTencasi());
+                intent.putExtra("file",selectedSong.getFile());
+                startActivity(intent);
+            }
+        });
 
 
 

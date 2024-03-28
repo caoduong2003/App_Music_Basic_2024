@@ -34,6 +34,10 @@ public class SongActivity extends AppCompatActivity {
     private static final String PREF_NAME = "MyPreferences"; // Tên của SharedPreferences
     private static final String KEY_NAME = "name"; // Key của dữ liệu cần kiểm tra
 
+    String title = getIntent().getStringExtra("title");
+    String artist = getIntent().getStringExtra("artist");
+    int file = getIntent().getIntExtra("file",0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
