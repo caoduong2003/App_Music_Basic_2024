@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 public class ListSong extends AppCompatActivity {
 
-    public String[] songName = {"bai1","bai2","bai3","bai4"};
+    public String[] songName = {"Chúng ta của hiện tại","Chúng ta của tương lai","Hãy trao cho anh","Nơi này có anh"};
 
-    public String[] name = {"bai1","bai2","bai3","bai4"};
+    public String[] name = {"Sơn tùng mtp","Sơn tùng mtp","Sơn tùng mtp","Sơn tùng mtp"};
 
     public int[] image = {R.drawable.man,R.drawable.man,R.drawable.man,R.drawable.man};
-    public  int[] file = {R.raw.chungtacuahientai,R.raw.haytraochoanh,R.raw.chungtacuatuonglai,R.raw.noinaycoanh};
+    public  int[] file = {R.raw.chungtacuahientai,R.raw.chungtacuatuonglai,R.raw.haytraochoanh,R.raw.noinaycoanh};
     ListView listView;
 
 
