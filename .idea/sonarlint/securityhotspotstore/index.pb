@@ -21,3 +21,7 @@ k
 ;app/src/main/java/com/example/appmusicbasic/List_Music.java,7\b\7bbace1cc5fcf728acfcc136ffdc8f1024969744
 o
 ?app/src/main/java/com/example/appmusicbasic/ForgotPassword.java,6\2\6217bea53ff9062be1b497ac150d2327e82da638
+l
+<app/src/main/java/com/example/appmusicbasic/SongAdapter.java,5\d\5dd52a49c6766d671409c9fa9a87dc3849a291f6
+e
+5app/src/main/java/com/example/appmusicbasic/Song.java,3\6\36eaa0bd42ea2ed872485c294c8d0c06f19b1579

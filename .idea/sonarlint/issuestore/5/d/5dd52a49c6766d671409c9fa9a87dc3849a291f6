@@ -1,0 +1,12 @@
+
+]
+java:S2094
+"BRemove this empty class, write its code or make it an "interface".(ğûãéøÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'android.content.Context'.(©Ê‰è
+S
+java:S1128"8Remove this unused import 'android.widget.ArrayAdapter'.( €ŠÑÿÿÿÿÿ
+N
+java:S1128"8Remove this unused import 'androidx.annotation.NonNull'.(ˆÛúÜ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
