@@ -1,0 +1,54 @@
+Index: .idea/sonarlint/issuestore/index.pb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nm\n=app/src/main/java/com/example/appmusicbasic/MainActivity.java\u0012,c\\f\\cf58292e4ec747034a5404ba8baa0182806c1e12\nP\n app/src/main/AndroidManifest.xml\u0012,8\\c\\8c55c3ccc257e5907959013f99656e4c8ec3903e\nm\n=app/src/main/java/com/example/appmusicbasic/SongActivity.java\u0012,a\\8\\a8805c74d5862376fff0c27888dbf565c390cdd8\ni\n9app/src/main/java/com/example/appmusicbasic/ListSong.java\u0012,0\\3\\033051ea4cad04a369c5a370ea96293cc20f50f1\ne\n5app/src/main/java/com/example/appmusicbasic/Song.java\u0012,3\\6\\36eaa0bd42ea2ed872485c294c8d0c06f19b1579\ni\n9app/src/main/java/com/example/appmusicbasic/SongData.java\u0012,1\\a\\1aef42524389d907060d6f5d18224008c9873b91
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/sonarlint/issuestore/index.pb b/.idea/sonarlint/issuestore/index.pb
+--- a/.idea/sonarlint/issuestore/index.pb	(revision 4032c82164c19d010f0eaa7fd615bfe6d0369fd0)
++++ b/.idea/sonarlint/issuestore/index.pb	(date 1711607969017)
+@@ -1,6 +1,4 @@
+ 
+-m
+-=app/src/main/java/com/example/appmusicbasic/MainActivity.java,c\f\cf58292e4ec747034a5404ba8baa0182806c1e12
+ P
+  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+ m
+@@ -9,5 +7,5 @@
+ 9app/src/main/java/com/example/appmusicbasic/ListSong.java,0\3\033051ea4cad04a369c5a370ea96293cc20f50f1
+ e
+ 5app/src/main/java/com/example/appmusicbasic/Song.java,3\6\36eaa0bd42ea2ed872485c294c8d0c06f19b1579
+-i
+-9app/src/main/java/com/example/appmusicbasic/SongData.java,1\a\1aef42524389d907060d6f5d18224008c9873b91
+\ No newline at end of file
++l
++<app/src/main/java/com/example/appmusicbasic/SongAdapter.java,5\d\5dd52a49c6766d671409c9fa9a87dc3849a291f6
+\ No newline at end of file
+Index: .idea/sonarlint/securityhotspotstore/index.pb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\nm\n=app/src/main/java/com/example/appmusicbasic/MainActivity.java\u0012,c\\f\\cf58292e4ec747034a5404ba8baa0182806c1e12\nP\n app/src/main/AndroidManifest.xml\u0012,8\\c\\8c55c3ccc257e5907959013f99656e4c8ec3903e\nm\n=app/src/main/java/com/example/appmusicbasic/SongActivity.java\u0012,a\\8\\a8805c74d5862376fff0c27888dbf565c390cdd8\ni\n9app/src/main/java/com/example/appmusicbasic/ListSong.java\u0012,0\\3\\033051ea4cad04a369c5a370ea96293cc20f50f1\ne\n5app/src/main/java/com/example/appmusicbasic/Song.java\u0012,3\\6\\36eaa0bd42ea2ed872485c294c8d0c06f19b1579\ni\n9app/src/main/java/com/example/appmusicbasic/SongData.java\u0012,1\\a\\1aef42524389d907060d6f5d18224008c9873b91
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/sonarlint/securityhotspotstore/index.pb b/.idea/sonarlint/securityhotspotstore/index.pb
+--- a/.idea/sonarlint/securityhotspotstore/index.pb	(revision 4032c82164c19d010f0eaa7fd615bfe6d0369fd0)
++++ b/.idea/sonarlint/securityhotspotstore/index.pb	(date 1711607969031)
+@@ -1,6 +1,4 @@
+ 
+-m
+-=app/src/main/java/com/example/appmusicbasic/MainActivity.java,c\f\cf58292e4ec747034a5404ba8baa0182806c1e12
+ P
+  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+ m
+@@ -9,5 +7,5 @@
+ 9app/src/main/java/com/example/appmusicbasic/ListSong.java,0\3\033051ea4cad04a369c5a370ea96293cc20f50f1
+ e
+ 5app/src/main/java/com/example/appmusicbasic/Song.java,3\6\36eaa0bd42ea2ed872485c294c8d0c06f19b1579
+-i
+-9app/src/main/java/com/example/appmusicbasic/SongData.java,1\a\1aef42524389d907060d6f5d18224008c9873b91
+\ No newline at end of file
++l
++<app/src/main/java/com/example/appmusicbasic/SongAdapter.java,5\d\5dd52a49c6766d671409c9fa9a87dc3849a291f6
+\ No newline at end of file

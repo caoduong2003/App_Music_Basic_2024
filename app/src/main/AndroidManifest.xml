@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,11 +21,6 @@
         <activity
             android:name=".FeedbackSong"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".ForgotPassword"
@@ -41,16 +42,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SongActivity"
-            android:exported="true">
 
-        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".SongRun"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".PlayerActivity"
+            android:exported="true">
+        </activity>
+
     </application>
 
 </manifest>

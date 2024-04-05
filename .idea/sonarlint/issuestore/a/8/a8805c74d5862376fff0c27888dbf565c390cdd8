@@ -1,0 +1,48 @@
+
+]
+java:S1192."HDefine a constant instead of duplicating this literal "process" 4 times.(Ä–£(
+d
+java:S1192X"OUse already-defined constant 'PREF_NAME' instead of duplicating its value here.(ãÏ
+^
+java:S1192."IDefine a constant instead of duplicating this literal "position" 4 times.(Ä–£(
+C
+java:S1604o"(Make this anonymous inner class a lambda(òéœŸøÿÿÿÿ
+?
+java:S1604‚"(Make this anonymous inner class a lambda(çòÙ†
+?
+java:S1604Œ"(Make this anonymous inner class a lambda(›¸Û–
+D
+java:S1604 "(Make this anonymous inner class a lambda(—™˜üÿÿÿÿ
+D
+java:S1604û"(Make this anonymous inner class a lambda(ÍÜ£ıùÿÿÿÿ
+_
+java:S1659"IDeclare "txtTotalTime" and all following declarations on a separate line.(ş­Ì
+[
+java:S1659"EDeclare "btnNexts" and all following declarations on a separate line.(éÚ†ù
+Q	java:S1252"<This block of commented-out lines of code should be removed.(ğËÛÙ
+œ
+java:S1186A"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯†çŸûÿÿÿÿ
+œ
+java:S1186F"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ®çâùÿÿÿÿ
+E	java:S106M"+Replace this use of System.out by a logger.(ŠÚ¸øÿÿÿÿ
+V
+java:S1854j";Remove this useless assignment to local variable "process".(ö°ÔÂşÿÿÿÿ
+\
+java:S1854i"ARemove this useless assignment to local variable "savedPosition".(“Ş¶şÿÿÿÿ
+M
+java:S1481i"2Remove this unused "savedPosition" local variable.(“Ş¶şÿÿÿÿ
+G
+java:S1481j",Remove this unused "process" local variable.(ö°ÔÂşÿÿÿÿ
+F	java:S106"+Replace this use of System.out by a logger.(Š˜‹Îıÿÿÿÿ
+
+java:S1186µ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯†çŸûÿÿÿÿ
+
+java:S1186º"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ñ®çâùÿÿÿÿ
+i	java:S100ê"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ˆ´¾ûÿÿÿÿ
+i	java:S100ñ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¾éöîüÿÿÿÿ
+F
+java:S1874ò"/Remove this use of "Handler"; it is deprecated.(’Ú©Š
+B
+java:S1068#",Remove this unused "KEY_NAME" private field.(°³êÜ
+S
+java:S1144Ë"7Remove this unused private "chayLaiMediaPlayer" method.(·ÙÁˆûÿÿÿÿ

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongActivity">
+    android:background="@drawable/background_img"
+    >
 
     <TextView
         android:id="@+id/txtTenBaiHat"
@@ -12,7 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:gravity="center"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
         android:text="Tên Bài hát"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,105 +25,132 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtTotalTime"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="604dp"
-        android:gravity="center"
-        android:text="00.00"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.881"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txtTimeSong"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="604dp"
-        android:gravity="center"
-        android:text="00.00"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnStop"
-        android:layout_width="39dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.427"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
-        app:srcCompat="@drawable/stop" />
-
-    <ImageButton
-        android:id="@+id/btnPrevious"
-        android:layout_width="39dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.26"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
-        app:srcCompat="@drawable/previous" />
-
-    <ImageButton
-        android:id="@+id/btnNexts"
-        android:layout_width="39dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
-        app:srcCompat="@drawable/next" />
-
     <ImageButton
         android:id="@+id/btnPlay"
-        android:layout_width="39dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="60dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
         app:srcCompat="@drawable/play" />
+
+    <ImageButton
+        android:id="@+id/btnNexts"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="60dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.669"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
+        app:srcCompat="@drawable/ic_next" />
+
+    <ImageButton
+        android:id="@+id/btnPrevious"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="60dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.338"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
+        app:srcCompat="@drawable/ic_previous" />
+
+    <ImageButton
+        android:id="@+id/btnFr"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="60dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
+        app:srcCompat="@drawable/fast_rewind" />
+
+    <ImageButton
+        android:id="@+id/btnFf"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="60dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
+        app:srcCompat="@drawable/fast_forward" />
 
     <ImageView
         android:id="@+id/ivDisc"
         android:layout_width="273dp"
         android:layout_height="257dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
-        app:srcCompat="@drawable/disc" />
+        app:srcCompat="@drawable/music" />
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:layout_width="280dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="88dp"
+        android:layout_width="250dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="84dp"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivDisc" />
+
+    <TextView
+        android:id="@+id/txtTotalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="608dp"
+        android:gravity="center"
+        android:text="00.00"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTimeSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="608dp"
+        android:gravity="center"
+
+
+        android:text="00.00"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    <com.gauravk.audiovisualizer.visualizer.BarVisualizer-->
+<!--        xmlns:custom="http://schemas.android.com/apk/res-auto"-->
+<!--        android:id="@+id/blast"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        custom:avDensity="0.8"-->
+<!--        custom:avType="fill"-->
+<!--        custom:avColor="@color/av_dark_blue"-->
+<!--        custom:avSpeed="normal"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
