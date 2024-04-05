@@ -7,11 +7,13 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -52,15 +54,22 @@ public class PlayerActivity extends AppCompatActivity {
 //        super.onDestroy();
 //    }
 
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_song);
 
+
+
+
+//
 //        getSupportActionBar().setTitle("Now Playing");
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//
+
 
         btnPrevious = findViewById(R.id.btnPrevious);
         btnNexts = findViewById(R.id.btnNexts);
@@ -174,9 +183,12 @@ public class PlayerActivity extends AppCompatActivity {
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
+
                 btnNexts.performClick();
             }
         });
+
+        int audioSessionId = mediaPlayer.getAudioSessionId();
         btnNexts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -228,6 +240,9 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
     }
+
+    // Phương thức để lưu trạng thái khi thoát ra ứng dụng
+
 
     public void startAnimation(View view){
         ObjectAnimator animator = ObjectAnimator.ofFloat(ivDisc,"rotation",0f,360f);

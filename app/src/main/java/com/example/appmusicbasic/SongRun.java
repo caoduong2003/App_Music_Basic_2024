@@ -1,5 +1,6 @@
 package com.example.appmusicbasic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
@@ -13,16 +14,20 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
+import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SongRun extends AppCompatActivity {
     ListView listView;
@@ -38,24 +43,34 @@ public class SongRun extends AppCompatActivity {
 
 
 
+
+
     }
 
+
+
+
+//    @Override
+//    public void onPermissionsChecked(@NonNull MultiplePermissionsReport report) {
+//        if (report.areAllPermissionsGranted()) {
+//            displaySong();
+//        } else {
+//            // Xử lý trường hợp quyền truy cập bị từ chối (ví dụ: hiển thị thông báo cho người dùng)
+//            Toast.makeText(SongRun.this, "Quyền truy cập READ_EXTERNAL_STORAGE bị từ chối!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
     public void runtimePermission(){
-        Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                .withListener(new PermissionListener() {
+        Dexter.withContext(this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO,Manifest.permission.READ_MEDIA_AUDIO)
+                .withListener(new MultiplePermissionsListener() {
                     @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                    public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
                         displaySong();
                     }
 
                     @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
                         permissionToken.continuePermissionRequest();
-
                     }
                 }).check();
 
