@@ -26,11 +26,11 @@ public class List_Music extends AppCompatActivity {
 //        String username = sharedPreferences.getString("username", "");
         String username = getIntent().getStringExtra("username");
         userID = (TextView) findViewById(R.id.userID);
-        if (!username.isEmpty()) {
-            userID.setText(username);
-        } else {
-            userID.setText("User");
-        }
+//        if (!username.isEmpty()) {
+//            userID.setText(username);
+//        } else {
+//            userID.setText("User");
+//        }
 
         listMusic = findViewById(R.id.listMusic);
 

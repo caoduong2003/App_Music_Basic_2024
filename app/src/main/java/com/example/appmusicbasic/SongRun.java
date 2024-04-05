@@ -42,12 +42,12 @@ public class SongRun extends AppCompatActivity {
         logout = findViewById(R.id.logout);
 
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
-//        String username = sharedPreferences.getString("username", "");
-        String username = getIntent().getStringExtra("username");
+        String username = sharedPreferences.getString("username", "");
+//        String username = getIntent().getStringExtra("username");
 
         userID = (TextView) findViewById(R.id.userID);
 
-        if (username != null) {
+        if (username != null && !username.isEmpty()) {
             userID.setText(username);
         } else {
             userID.setText("User");
