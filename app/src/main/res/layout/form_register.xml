@@ -23,7 +23,7 @@
             android:layout_marginBottom="5dp"
             android:backgroundTint="#B3FFFFFF"
             android:padding="10dp"
-            app:cardCornerRadius="5dp"
+            app:cardCornerRadius="10dp"
             app:cardElevation="5dp">
 
             <LinearLayout
