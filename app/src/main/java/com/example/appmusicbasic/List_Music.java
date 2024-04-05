@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class List_Music extends AppCompatActivity {
-    Button logout;
+    Button logout, feedback;
     SharedPreferences sharedPreferences; // luu trang thai dang nhap
 
     TextView userID;
@@ -34,6 +34,15 @@ public class List_Music extends AppCompatActivity {
 
         listMusic = findViewById(R.id.listMusic);
 
+        feedback = findViewById(R.id.feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(List_Music.this, FeedbackSong.class);
+                intent.putExtra("username", username);
+                startActivity(intent);
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
