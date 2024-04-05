@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
         boolean isLoggedIn  = sharedPreferences.getBoolean("Login", false);
         if (isLoggedIn ) {
-            Intent intent = new Intent(Login.this, List_Music.class);
+            Intent intent = new Intent(Login.this, SongRun.class);
             startActivity(intent);
             finish();
             return;
@@ -134,7 +134,7 @@ public class Login extends AppCompatActivity {
             while (cursor.moveToNext()) {
                 if (username.equals(cursor.getString(1)) && password.equals(cursor.getString(2))) {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Login.this, List_Music.class);
+                    Intent intent = new Intent(Login.this, SongRun.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
                     checkRemember();
