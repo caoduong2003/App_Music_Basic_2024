@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -32,14 +33,41 @@ import java.util.List;
 public class SongRun extends AppCompatActivity {
     ListView listView;
     String[] items;
+    boolean isPlaying;
+    SharedPreferences sharedPreferences; // luu trang thai dang nhap
 
+    SharedPreferences.Editor editor;
+
+    private static final String PREF_SONG_POSITION = "song_position";
+    private static final String PREF_SEEK_POSITION = "seek_position";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_run);
 
         listView = findViewById(R.id.listViewSong);
+        sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+        isPlaying  = sharedPreferences.getBoolean("playing", false);
         runtimePermission();
+
+        if (isPlaying) {
+//            Intent intent = new Intent(SongRun.this, PlayerActivity.class);
+//            startActivity(intent);
+//            finish();
+//            return;
+
+            String songName = sharedPreferences.getString("song_name","");
+            final ArrayList<File> mySong = findSong(Environment.getExternalStorageDirectory());
+            int position = sharedPreferences.getInt("thePosition",0);
+
+            startActivity(new Intent(getApplicationContext(),PlayerActivity.class )
+                    .putExtra("songs",mySong)
+                    .putExtra("songname",songName)
+                    .putExtra("pos",position));
+
+        }
+
+
 
 
 
@@ -119,6 +147,15 @@ public class SongRun extends AppCompatActivity {
                             .putExtra("songs",mySong)
                             .putExtra("songname",songName)
                             .putExtra("pos",position));
+                    sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+
+                    editor.putBoolean("playing",false);
+                    editor.putInt(PREF_SONG_POSITION, 0);
+                    editor.putInt(PREF_SEEK_POSITION, 0);
+                    editor.apply();
+
+
                 }
             });
 

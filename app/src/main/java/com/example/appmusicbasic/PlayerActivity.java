@@ -1,6 +1,5 @@
 package com.example.appmusicbasic;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
@@ -13,62 +12,59 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
 
 public class PlayerActivity extends AppCompatActivity {
     TextView txtTenBaiHat, txtTotalTime, txtTimeSong;
-    ImageButton btnPrevious, btnNexts,btnStop,btnPlay,btnff,btnfr;
+    ImageButton btnPrevious, btnNexts,btnBack,btnPlay,btnff,btnfr;
     ImageView ivDisc;
     SeekBar seekBar;
     Animation animation;
 
     String sname;
 
-    public static final String EXTRA_NAME = "song_name";
+    private static final String PREF_SONG_POSITION = "song_position";
+    private static final String PREF_SEEK_POSITION = "seek_position";
+    private static final String PREF_SONG_NAME = "song_name";
+
     static MediaPlayer mediaPlayer;
     int position;
     ArrayList<File> mySongs;
     Thread updateSeekbar;
+    String endTime;
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==android.R.id.home){
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
-//    @Override
-//    protected void onDestroy() {
-//
-//        super.onDestroy();
-//    }
 
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences; // luu trang thai dang nhap
+
     SharedPreferences.Editor editor;
 
+
+
+
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.play_song);
+        // Initialize SharedPreferences
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        editor = sharedPreferences.edit();
 
+        sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
-
-
-//
-//        getSupportActionBar().setTitle("Now Playing");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         btnPrevious = findViewById(R.id.btnPrevious);
@@ -77,21 +73,22 @@ public class PlayerActivity extends AppCompatActivity {
         btnff = findViewById(R.id.btnFf);
         btnfr = findViewById(R.id.btnFr);
 
-
         txtTenBaiHat = findViewById(R.id.txtTenBaiHat);
         txtTimeSong = findViewById(R.id.txtTimeSong);
         txtTotalTime = findViewById(R.id.txtTotalTime);
         seekBar = findViewById(R.id.seekBar);
 
         ivDisc = findViewById(R.id.ivDisc);
-//        animation= AnimationUtils.loadAnimation(PlayerActivity.this,R.anim.disc_rotate);
 
+        // Restore playback state from SharedPreferences
 
         if(mediaPlayer != null){
             mediaPlayer.stop();
             mediaPlayer.release();
 
         }
+
+
 
         Intent i = getIntent();
         Bundle bundle = i.getExtras();
@@ -104,14 +101,24 @@ public class PlayerActivity extends AppCompatActivity {
         sname = mySongs.get(position).getName();
         txtTenBaiHat.setText(sname);
 
+
         mediaPlayer = MediaPlayer.create(getApplicationContext(),uri);
+
         mediaPlayer.start();
+
+
+//        if(mediaPlayer != null){
+//            mediaPlayer.stop();
+//            mediaPlayer.release();
+//
+//        }
+
         updateSeekbar = new Thread(){
             @Override
             public void run() {
                 int totalDuration = mediaPlayer.getDuration();
                 int currentPosition = 0;
-                while (currentPosition < totalDuration){
+                while (currentPosition < totalDuration ){
                     try {
                         sleep(500);
                         currentPosition = mediaPlayer.getCurrentPosition();
@@ -146,7 +153,7 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        String endTime = createTime(mediaPlayer.getDuration());
+        endTime = createTime(mediaPlayer.getDuration());
         txtTotalTime.setText(endTime);
 
         final Handler handler = new Handler();
@@ -188,7 +195,6 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
-        int audioSessionId = mediaPlayer.getAudioSessionId();
         btnNexts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,6 +208,8 @@ public class PlayerActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.ic_pause);
                 startAnimation(ivDisc);
+                endTime = createTime(mediaPlayer.getDuration());
+                txtTotalTime.setText(endTime);
             }
         });
 
@@ -219,6 +227,10 @@ public class PlayerActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.ic_pause);
                 startAnimation(ivDisc);
+
+                endTime = createTime(mediaPlayer.getDuration());
+                txtTotalTime.setText(endTime);
+
             }
         });
 
@@ -239,9 +251,52 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         });
+        
+
+
     }
 
-    // Phương thức để lưu trạng thái khi thoát ra ứng dụng
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+
+
+        // Retrieve saved song position and seekBar progress
+        int songPosition = sharedPreferences.getInt(PREF_SONG_POSITION, 0);
+        int seekPosition = sharedPreferences.getInt(PREF_SEEK_POSITION, 0);
+        int position = sharedPreferences.getInt("thePosition",0);
+        String savedSongName = sharedPreferences.getString(PREF_SONG_NAME, "");
+
+        // Restore song information and seekBar progress
+        if (!savedSongName.isEmpty()) {
+
+            txtTenBaiHat.setText(sname);
+            mediaPlayer.seekTo(songPosition);
+            seekBar.setProgress(seekPosition);
+            mediaPlayer.start();
+        }
+    }
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save current song position and seekBar progress
+        if (mediaPlayer != null) {
+            sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+            editor = sharedPreferences.edit();
+
+            editor.putInt(PREF_SONG_POSITION, mediaPlayer.getCurrentPosition());
+            editor.putInt(PREF_SEEK_POSITION, seekBar.getProgress());
+            editor.putInt("thePosition",position);
+            editor.putString(PREF_SONG_NAME, sname);
+            editor.putBoolean("playing",true);
+            editor.apply();
+        }
+    }
 
 
     public void startAnimation(View view){
