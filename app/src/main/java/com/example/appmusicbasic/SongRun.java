@@ -29,10 +29,18 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class SongRun extends AppCompatActivity {
     Button logout, feedback;
-    SharedPreferences sharedPreferences;
+    boolean isPlaying;
+    SharedPreferences sharedPreferences; // luu trang thai dang nhap
+
+    SharedPreferences.Editor editor , editor1;
+
+    private static final String PREF_SONG_POSITION = "song_position";
+    private static final String PREF_SEEK_POSITION = "seek_position";
     TextView userID;
     ListView listView;
     String[] items;
@@ -45,39 +53,6 @@ public class SongRun extends AppCompatActivity {
         listView = findViewById(R.id.listMusic);
         logout = findViewById(R.id.logout);
 
-        // Kiểm tra xem vị trí của bài hát đã được lưu trước đó hay không
-        SharedPreferences prefs = getSharedPreferences("music_position", MODE_PRIVATE);
-        final int savedPosition = prefs.getInt("position", 0);
-
-        // Nếu vị trí đã được lưu trước đó và MediaPlayer đang không phát nhạc
-        if (savedPosition > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Tiếp tục nghe nhạc");
-            builder.setMessage("Bạn muốn tiếp tục nghe từ vị trí đã dừng lại trước đó không?");
-
-            // Nút "Có": Tiếp tục phát nhạc từ vị trí đã lưu
-            builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    if (mediaPlayer != null) {
-                        mediaPlayer.seekTo(savedPosition);
-                        mediaPlayer.start();
-                    }
-                }
-            });
-
-            // Nút "Không": Bỏ qua hoặc reset vị trí của bài hát
-            builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Bỏ qua hoặc reset vị trí của bài hát
-                }
-            });
-
-            // Hiển thị AlertDialog
-            builder.show();
-
-        }
 
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "");
@@ -85,7 +60,7 @@ public class SongRun extends AppCompatActivity {
 
         userID = (TextView) findViewById(R.id.userID);
 
-        if (!username.isEmpty() || !usernameNew.isEmpty() || username != null || usernameNew != null || !username.equals("null") || !usernameNew.equals("null") || !username.equals("") || !usernameNew.equals("") ){
+        if (!username.isEmpty() || !usernameNew.isEmpty() || username != null || usernameNew != null || !username.equals("null") || !usernameNew.equals("null") || !username.equals("") || !usernameNew.equals("")) {
             userID.setText(username);
             userID.setText(usernameNew);
         } else {
@@ -105,36 +80,49 @@ public class SongRun extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
+                sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+                editor1 = sharedPreferences.edit();
                 editor.remove("Login");
                 editor.remove("username");
                 editor.remove("password");
+                editor1.remove("song_position");
+                editor1.remove("seek_position");
+                editor1.remove("playing");
+                editor1.remove("song_name");
+                editor1.remove("thePosition");
                 editor.apply();
+                editor1.apply();
                 Intent intent = new Intent(SongRun.this, Login.class);
                 startActivity(intent);
             }
         });
 
-
+        //luu vi tri bai hat dang phat
+        sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+        isPlaying = sharedPreferences.getBoolean("playing", false);
         runtimePermission();
 
+        if (isPlaying) {
+//            Intent intent = new Intent(SongRun.this, PlayerActivity.class);
+//            startActivity(intent);
+//            finish();
+//            return;
 
-    }
+            String songName = sharedPreferences.getString("song_name", "");
+            final ArrayList<File> mySong = findSong(Environment.getExternalStorageDirectory());
+            int position = sharedPreferences.getInt("thePosition", 0);
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        // Kiểm tra nếu MediaPlayer đang phát nhạc
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            // Lưu vị trí của bài hát vào SharedPreferences
-            SharedPreferences.Editor editor = getSharedPreferences("music_position", MODE_PRIVATE).edit();
-            editor.putInt("position", mediaPlayer.getCurrentPosition());
-            editor.apply();
+            startActivity(new Intent(getApplicationContext(), PlayerActivity.class)
+                    .putExtra("songs", mySong)
+                    .putExtra("songname", songName)
+                    .putExtra("pos", position));
+
         }
+
+
     }
-
-
-
 
 
     public void runtimePermission() {
@@ -181,11 +169,23 @@ public class SongRun extends AppCompatActivity {
 
     void displaySong() {
         final ArrayList<File> mySong = findSong(Environment.getExternalStorageDirectory());
+        // Sắp xếp danh sách các tập tin theo kích thước từ nhỏ đến lớn
+        Collections.sort(mySong, new Comparator<File>() {
+            @Override
+            public int compare(File file1, File file2) {
+                return Long.compare(file1.length(), file2.length());
+            }
+        });
         items = new String[mySong.size()];
-        for (int i = 0; i < mySong.size(); i++) {
+//        for (int i = 0; i < mySong.size(); i++) {
+//            items[i] = mySong.get(i).getName().toString().replace(".mp3", "").replace(".wav", "");
+//
+//        }
+        for (int i = mySong.size()-1; i >= 0 ; i--) {
             items[i] = mySong.get(i).getName().toString().replace(".mp3", "").replace(".wav", "");
 
         }
+
 
 //        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,items);
 //        listView.setAdapter(myAdapter);
@@ -200,6 +200,13 @@ public class SongRun extends AppCompatActivity {
                         .putExtra("songs", mySong)
                         .putExtra("songname", songName)
                         .putExtra("pos", position));
+                sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+
+                editor.putBoolean("playing", false);
+                editor.putInt(PREF_SONG_POSITION, 0);
+                editor.putInt(PREF_SEEK_POSITION, 0);
+                editor.apply();
             }
         });
 
@@ -229,7 +236,6 @@ public class SongRun extends AppCompatActivity {
             TextView textsong = myView.findViewById(R.id.txtSong);
             textsong.setSelected(true);
             textsong.setText(items[position]);
-
             return myView;
         }
     }

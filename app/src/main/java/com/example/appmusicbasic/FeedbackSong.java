@@ -41,7 +41,7 @@ public class FeedbackSong extends AppCompatActivity {
                     Toast.makeText(FeedbackSong.this, "Địa chỉ email không hợp lệ", Toast.LENGTH_LONG).show();
                 } else {
                     // Nếu tất cả thông tin hợp lệ, hiển thị thông báo cảm ơn
-                    Toast.makeText(FeedbackSong.this, "Cảm ơn bạn đã phản hồi", Toast.LENGTH_LONG).show();
+                    Toast.makeText(FeedbackSong.this, "Cảm ơn bạn đã bình luận", Toast.LENGTH_LONG).show();
 
                     finish();
 

@@ -9,19 +9,19 @@
 
     <TextView
         android:id="@+id/txtTenBaiHat"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
-        android:gravity="center"
         android:ellipsize="marquee"
+        android:gravity="center"
         android:marqueeRepeatLimit="marquee_forever"
         android:singleLine="true"
         android:text="Tên Bài hát"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTenBaiHat"
-        app:srcCompat="@drawable/play" />
+        app:srcCompat="@drawable/ic_pause" />
 
     <ImageButton
         android:id="@+id/btnNexts"
@@ -143,14 +143,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--    <com.gauravk.audiovisualizer.visualizer.BarVisualizer-->
-<!--        xmlns:custom="http://schemas.android.com/apk/res-auto"-->
-<!--        android:id="@+id/blast"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        custom:avDensity="0.8"-->
-<!--        custom:avType="fill"-->
-<!--        custom:avColor="@color/av_dark_blue"-->
-<!--        custom:avSpeed="normal"/>-->
+    <!--        xmlns:custom="http://schemas.android.com/apk/res-auto"-->
+    <!--        android:id="@+id/blast"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        custom:avDensity="0.8"-->
+    <!--        custom:avType="fill"-->
+    <!--        custom:avColor="@color/av_dark_blue"-->
+    <!--        custom:avSpeed="normal"/>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

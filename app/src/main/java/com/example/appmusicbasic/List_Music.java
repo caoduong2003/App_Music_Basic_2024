@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class List_Music extends AppCompatActivity {
     Button logout, feedback;
     SharedPreferences sharedPreferences; // luu trang thai dang nhap
-
+    SharedPreferences.Editor editor, editor1;
     TextView userID;
     ListView listMusic;
 
@@ -47,11 +47,19 @@ public class List_Music extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = sharedPreferences.edit();
 
+                sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+                editor = sharedPreferences.edit();
+                sharedPreferences = getSharedPreferences("mediaPlaying", MODE_PRIVATE);
+                editor1 = sharedPreferences.edit();
                 editor.remove("Login");
                 editor.remove("username");
                 editor.remove("password");
+                editor1.remove("song_position");
+                editor1.remove("seek_position");
+                editor1.remove("playing");
+                editor1.remove("song_name");
+                editor1.remove("thePosition");
 
 
                 editor.apply();
