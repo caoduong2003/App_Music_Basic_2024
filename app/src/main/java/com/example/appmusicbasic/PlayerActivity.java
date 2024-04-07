@@ -187,13 +187,6 @@ public class PlayerActivity extends AppCompatActivity {
 
         //next listener
 
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-
-                btnNexts.performClick();
-            }
-        });
 
         btnNexts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,6 +205,15 @@ public class PlayerActivity extends AppCompatActivity {
                 txtTotalTime.setText(endTime);
             }
         });
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+
+                btnNexts.performClick();
+            }
+        });
+
 
         btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
