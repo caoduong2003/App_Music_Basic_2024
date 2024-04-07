@@ -1,5 +1,6 @@
 package com.example.appmusicbasic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
@@ -12,13 +13,13 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -153,6 +154,10 @@ public class PlayerActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+
         endTime = createTime(mediaPlayer.getDuration());
         txtTotalTime.setText(endTime);
 
@@ -253,7 +258,7 @@ public class PlayerActivity extends AppCompatActivity {
                 }
             }
         });
-        
+
 
 
     }

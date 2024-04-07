@@ -1,0 +1,34 @@
+
+J
+java:S1604M"(Make this anonymous inner class a lambda(ë‡½Ÿûÿÿÿÿ8¹­óÛç1
+E
+java:S1604X"(Make this anonymous inner class a lambda(Î§£¿8¹­óÛç1
+E
+java:S1604`"(Make this anonymous inner class a lambda(ÁØºá8¹­óÛç1
+v
+java:S1104"YMake DATABASE_NAME a static final constant or non-public and provide accessors if needed.(Ü÷«ß8¹­óÛç1
+|
+java:S1104"ZMake DB_SUFFIX_PATH a static final constant or non-public and provide accessors if needed.(ê ßöşÿÿÿÿ8¹­óÛç1
+q
+java:S2095·"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(ËÒâøÿÿÿÿ8ûèùÛç1
+l
+java:S2095±"IUse try-with-resources or close this "InputStream" in a "finally" clause.(”ÕÙ şÿÿÿÿ8ûèùÛç1
+t	java:S116"XRename this field "DATABASE_NAME" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ü÷«ß8«®óÛç1
+z	java:S116"YRename this field "DB_SUFFIX_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê ßöşÿÿÿÿ8«®óÛç1
+M
+java:S1659""+Declare "btnForgotPass" on a separate line.(Ø¦ªŠüÿÿÿÿ8¯®óÛç1
+D
+java:S1659#"'Declare "passLogin" on a separate line.(Šç—8¯®óÛç1
+O
+java:S1659$"-Declare "isPasswordValid" on a separate line.(ÖõÀİÿÿÿÿÿ8¯®óÛç1
+I
+java:S1659%",Declare "passLoginError" on a separate line.( ”®à8¯®óÛç1
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ê ßöşÿÿÿÿ8²®óÛç1
+X	java:S1258"<This block of commented-out lines of code should be removed.(Ø·‰÷8¸®óÛç1
+X	java:S125="<This block of commented-out lines of code should be removed.(çàß8¸®óÛç1
+]	java:S125t"<This block of commented-out lines of code should be removed.(ÚÓ¡·üÿÿÿÿ8ïößøç1
+j	java:S100|"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€èÎ˜8œéùÛç1
+Y	java:S125¨"<This block of commented-out lines of code should be removed.(¾—‚Å8¡éùÛç1
+j	java:S100Ñ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿—æ8ªéùÛç1
+Y	java:S125ã"<This block of commented-out lines of code should be removed.(¶ö€8¬éùÛç1
