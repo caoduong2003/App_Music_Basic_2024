@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">AppMusicBasic</string>
-    <string name="StrLoginError">This field cannot be empty</string>
-    <string name="StrPassError">This field cannot be empty</string>
+    <string name="StrLoginError">Vui lòng điền đủ</string>
+    <string name="StrPassError">Vui lòng điền đủ</string>
 </resources>

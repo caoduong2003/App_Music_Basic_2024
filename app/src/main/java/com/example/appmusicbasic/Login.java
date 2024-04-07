@@ -125,23 +125,26 @@ public class Login extends AppCompatActivity {
         String username = userLogin.getText().toString().trim();
         String password = passLogin.getText().toString().trim();
         SQLiteDatabase database = null;
+        boolean loginSuccess = false;
         try {
             database = SQLiteDatabase.openDatabase(getDatabasePath(), null, SQLiteDatabase.OPEN_READWRITE);
             Cursor cursor = database.rawQuery("SELECT * FROM users WHERE username = ? AND password = ?", new String[]{username, password});
 
-
-
             while (cursor.moveToNext()) {
                 if (username.equals(cursor.getString(1)) && password.equals(cursor.getString(2))) {
+                    loginSuccess = true;
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(Login.this, SongRun.class);
                     intent.putExtra("username", username);
                     startActivity(intent);
                     checkRemember();
-                } else {
+                     // Đánh dấu đăng nhập thành công
+                    break; // Thoát khỏi vòng lặp khi đã tìm thấy người dùng
+                }
+                if (!loginSuccess) {
+                    System.out.println("---------------------------------------------------------Login Failed");
                     Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show();
                 }
-
 
             }
         } finally {

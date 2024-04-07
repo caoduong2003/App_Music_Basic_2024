@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Phản hồi bài hát"
+        android:text="Bình luận bài hát"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -63,7 +63,7 @@
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nội dung phản hồi"
+                android:hint="Nội dung bình luận"
                 android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Gửi phản hồi" />
+            android:text="Gửi bình luận" />
 
     </LinearLayout>
 </RelativeLayout>

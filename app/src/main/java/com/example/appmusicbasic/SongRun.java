@@ -1,8 +1,12 @@
 package com.example.appmusicbasic;
 
+import static com.example.appmusicbasic.PlayerActivity.mediaPlayer;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -41,16 +45,52 @@ public class SongRun extends AppCompatActivity {
         listView = findViewById(R.id.listMusic);
         logout = findViewById(R.id.logout);
 
+        // Kiểm tra xem vị trí của bài hát đã được lưu trước đó hay không
+        SharedPreferences prefs = getSharedPreferences("music_position", MODE_PRIVATE);
+        final int savedPosition = prefs.getInt("position", 0);
+
+        // Nếu vị trí đã được lưu trước đó và MediaPlayer đang không phát nhạc
+        if (savedPosition > 0 && mediaPlayer != null && !mediaPlayer.isPlaying()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Tiếp tục nghe nhạc");
+            builder.setMessage("Bạn muốn tiếp tục nghe từ vị trí đã dừng lại trước đó không?");
+
+            // Nút "Có": Tiếp tục phát nhạc từ vị trí đã lưu
+            builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    if (mediaPlayer != null) {
+                        mediaPlayer.seekTo(savedPosition);
+                        mediaPlayer.start();
+                    }
+                }
+            });
+
+            // Nút "Không": Bỏ qua hoặc reset vị trí của bài hát
+            builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Bỏ qua hoặc reset vị trí của bài hát
+                }
+            });
+
+            // Hiển thị AlertDialog
+            builder.show();
+
+        }
+
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
         String username = sharedPreferences.getString("username", "");
-//        String username = getIntent().getStringExtra("username");
+        String usernameNew = getIntent().getStringExtra("username");
 
         userID = (TextView) findViewById(R.id.userID);
 
-        if (username != null && !username.isEmpty()) {
+        if (!username.isEmpty() || !usernameNew.isEmpty() || username != null || usernameNew != null || !username.equals("null") || !usernameNew.equals("null") || !username.equals("") || !usernameNew.equals("") ){
             userID.setText(username);
+            userID.setText(usernameNew);
         } else {
             userID.setText("User");
+
         }
 
         feedback = findViewById(R.id.feedback);
@@ -80,6 +120,22 @@ public class SongRun extends AppCompatActivity {
 
 
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Kiểm tra nếu MediaPlayer đang phát nhạc
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            // Lưu vị trí của bài hát vào SharedPreferences
+            SharedPreferences.Editor editor = getSharedPreferences("music_position", MODE_PRIVATE).edit();
+            editor.putInt("position", mediaPlayer.getCurrentPosition());
+            editor.apply();
+        }
+    }
+
+
+
+
 
     public void runtimePermission() {
         Dexter.withContext(this).withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
